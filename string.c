@@ -115,24 +115,17 @@ char* myStrdub(char* source) { //НУЖНО ПРОПИСАТЬ ОЧИСТКУ
  */
 
 char* myStrstr(char* source, char* value) {
-    if(source == NULL) {
+    if(source == NULL && value == NULL) {
 		return NULL;
 	}
-	if(value == NULL) {
-		return NULL;
+	for (int i = 0; i < myStrlen(source); i++) {
+		if (*source == *value) {
+			if (myMemcmp(source, value, myStrlen(value)) == 0) {
+				return source;
+			}
+		}
+		source++;
 	}
-    if (myStrlen(value) == 0) {
-        return (char *) source;
-    }
-    while (*source != '\0') {
-        if (*source == *value) {
-            while (*source == *value) {
-                ++source;
-            }
-            return (--source);
-        }
-        source++;
-    }
     return NULL;
 }
 
@@ -202,3 +195,28 @@ void *myMemcpy (void *target, const void *source, size_t n) {
 	}
 	return (void*)target;
 }
+
+/**
+ * @brief Compares strings
+ * @details Compares strings for similarity at a certain length
+ * @param source The first string to compare
+ * @param source The second string to compare
+ * @param the size of the substring to be compared
+ * @return Returns 0 if they are equals or retuns any other number 
+ */
+
+int myMemcmp(char* string1, char* string2,  size_t n) {
+	if (string1 == NULL && string2 == NULL) {
+		return NULL;
+	}
+	for(size_t i = 0; i < n; i++){
+		if (string1[i] == string2[i]) {
+			continue;
+		}
+		else {
+			return string1[i] - string2[i];
+		}
+	}
+	return 0;
+}
+

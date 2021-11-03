@@ -7,6 +7,7 @@
 
 int myStrlen(char* source);
 int myStrcmp(char* string1, char* string2);
+int myMemcmp(char* string1, char* string2,  size_t n);
 char* myStrcpy(char* target, char* source);
 char* myStrchr(char *source, int ch);
 char* myStrdub(char* source);
