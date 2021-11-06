@@ -17,7 +17,7 @@ int main() {
 	printf("strcpy = %s\n", a);
 	printf("strcmp = %d\n", myStrcmp(string1, string2));
 	printf("strchr = %c\n", *myStrchr(string2, 'b'));
-	printf("strdub = %s\n", myStrdub(string1));
+	printf("strdub = %s\n", myStrdup(string1));
 	char v[] = "abacala";
 	printf("strstr = %s\n", (char*)myStrstr("ababacalacal", "cal"));
 	printf("memchr = %d\n", myMemchr(string1, 'c', myStrlen(string1) + 1));
