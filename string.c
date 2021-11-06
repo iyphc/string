@@ -37,10 +37,7 @@ int myStrlen(char* source) {
  */
 
 int myStrcmp(char* string1, char* string2) {
-	if (string1 == NULL) {
-		return NULL;
-	}
-	if (string2 == NULL) {
+	if (string1 == NULL || string2 == NULL) {
 		return NULL;
 	}
 	while (*string1 && (*string1 == *string2)) {
@@ -58,13 +55,9 @@ int myStrcmp(char* string1, char* string2) {
  */
 
 char* myStrcpy(char* target, char* source) {
-	if(source == NULL) {
+	if(source == NULL || target == NULL) {
 		return NULL;
 	}	
-	if(target == NULL) {
-		return NULL;
-	}
-	//assert(mystrlen(target) >= mystrlen(source));
 	for (int i = 0; i <= myStrlen(source); i++) {
 		target[i] = source[i]; 
 	}
@@ -98,11 +91,11 @@ char* myStrchr (char *source, int ch) {
  * @return The pointer to the first character from the string
  */
 
-char* myStrdub(char* source) { //НУЖНО ПРОПИСАТЬ ОЧИСТКУ
+char* myStrdup(char* source) { 
 	if(source == NULL) {
 		return NULL;
 	}
-	char* target = malloc(myStrlen(source));
+	char* target = (char*)malloc(myStrlen(source) + 1);
 	myStrcpy(target, source);
 	return target;
 }
@@ -177,10 +170,7 @@ void* myMemset(void *source, int c, size_t n) {
  */
 
 void *myMemcpy (void *target, const void *source, size_t n) {
-	if(source == NULL) {
-		return NULL;
-	}
-	if(target == NULL) {
+	if(source == NULL || target == NULL) {
 		return NULL;
 	}
 	if(myStrlen(source) < n) {
@@ -206,9 +196,12 @@ void *myMemcpy (void *target, const void *source, size_t n) {
  */
 
 int myMemcmp(char* string1, char* string2,  size_t n) {
-	if (string1 == NULL && string2 == NULL) {
+	if (string1 == NULL || string2 == NULL) {
 		return NULL;
 	}
+	if (myStrlen(string1) < n || myStrlen(string2) < n) {
+		return NULL;
+	} 
 	for(size_t i = 0; i < n; i++){
 		if (string1[i] == string2[i]) {
 			continue;
