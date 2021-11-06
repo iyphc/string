@@ -73,17 +73,19 @@ Errors test_myStrchr() {
 	return OK;
 }
 
-Errors test_myStrdub() {
-	if (myStrdub(test_string) != NULL) {
+Errors test_myStrdup() {
+	if (myStrdup(test_string) != NULL) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
 	char test_string1 [] = "abacaba";
-	char* test_string2 = myStrdub(test_string1);
+	char* test_string2 = myStrdup(test_string1);
 	if (myStrcmp(test_string1, test_string2) != 0) {
+		free(test_string2);
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
+	free(test_string2);
 	return OK;
 }
 
@@ -157,15 +159,11 @@ Errors test_myMemcpy() {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
-	if (myMemcpy(test_string1, test_string, 8) != NULL) {
+	if (myMemcpy(test_string1, test_string, 8) != 0) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
 	if (myMemcpy(test_string1, test_string2, 100) != NULL) {
-		printf("I don't wanna do it more. Crashed.");
-		return failure;
-	}
-	if (myMemcpy(test_string2, test_string1, 8) != NULL) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
@@ -176,14 +174,42 @@ Errors test_myMemcpy() {
 	return OK;
 }
 
+Errors test_myMemcmp() {
+	char test_string1[] = "abacaba";
+	char test_string2[] = "abac";
+	if (myMemcmp(test_string, test_string1, myStrlen(test_string1)) != NULL) {
+		printf("I don't wanna do it more. Crashed.");
+		return failure;
+	}
+	if (myMemcmp(test_string1, test_string, myStrlen(test_string1)) != NULL) {
+		printf("I don't wanna do it more. Crashed.");
+		return failure;
+	}
+	if (myMemcmp(test_string1, test_string2, 5) != NULL) {
+		printf("I don't wanna do it more. Crashed.");
+		return failure;
+	}
+	if (myMemcmp(test_string1, test_string2, 8) != NULL) {
+		printf("I don't wanna do it more. Crashed.");
+		return failure;
+	}
+	if (myMemcmp(test_string1, test_string2, 4) != 0) {
+		printf("I don't wanna do it more. Crashed.");
+		return failure;
+	}
+	return OK;
+}
+
+
 void run_all_tests() {
 	assert(test_myStrlen() == OK);
 	assert(test_myStrcpy() == OK);
 	assert(test_myStrchr() == OK);
-	assert(test_myStrdub() == OK);
+	assert(test_myStrdup() == OK);
 	assert(test_myStrstr() == OK);
 	assert(test_myMemchr() == OK);
 	assert(test_myMemset() == OK);
 	assert(test_myMemcpy() == OK); 
 	assert(test_myStrcmp() == OK);
+	assert(test_myMemcmp() == OK);
 }

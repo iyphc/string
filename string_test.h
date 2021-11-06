@@ -10,7 +10,10 @@ Errors test_myStrlen();
 Errors test_myStrcpy();
 Errors test_myStrcmp();
 Errors test_myStrchr();
-Errors test_myStrdub();
+Errors test_myStrdup();
 Errors test_myStrstr();
 Errors test_myMemchr();
+Errors test_myMemset();
+Errors test_myMemcpy();
+Errors test_myMemcmp();
 
