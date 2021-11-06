@@ -95,7 +95,7 @@ char* myStrdup(char* source) {
 	if(source == NULL) {
 		return NULL;
 	}
-	char* target = (char*)malloc(myStrlen(source) + 1);
+	char* target = (char*)calloc(myStrlen(source) + 1, sizeof(char));
 	myStrcpy(target, source);
 	return target;
 }
