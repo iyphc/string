@@ -1,0 +1,23 @@
+build: main_test.o string.o string_test.o
+	gcc --coverage main_test.o string_test.o string.o
+	./a.out
+	gcov main_test.c -m -b
+	gcov string_test.c -m -b
+	gcov string.c -m -b
+
+main_test.o: main_test.c
+	gcc -c --coverage main_test.c
+
+string.o: string.c
+	gcc -c --coverage string.c
+
+string_test.o: string_test.c
+	gcc -c --coverage string_test.c
+
+clear:
+	rm main_test.o string.o string_test.o 
+	rm main_test.gcno string.gcno string_test.gcno
+	rm main_test.gcda string.gcda string_test.gcda 
+	rm main_test.c.gcov string.c.gcov string_test.c.gcov
+	rm ./a.out
+
