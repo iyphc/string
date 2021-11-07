@@ -5,11 +5,11 @@ const char* test_string = NULL;
 Errors test_myStrcmp() {
 	char test_string1[] = "abacaba";
 	char test_string2[] = "abacaba";
-	if (myStrcmp(test_string, test_string1) != MAXINT) {
+	if (myStrcmp(NULL, test_string1) != MAXINT) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
-	if (myStrcmp(test_string1, test_string) != MAXINT) {
+	if (myStrcmp(test_string1, NULL) != MAXINT) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
@@ -26,7 +26,7 @@ Errors test_myStrcmp() {
 }
 
 Errors test_myStrlen() {
-	if (myStrlen(test_string) != MAXINT) {
+	if (myStrlen(NULL) != MAXINT) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
@@ -40,11 +40,11 @@ Errors test_myStrlen() {
 
 Errors test_myStrcpy() {
 	char test_string1 [] = "abacaba";
-	if (myStrcpy(test_string1, test_string) != NULL) {
+	if (myStrcpy(test_string1, NULL) != NULL) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
-	if (myStrcpy(test_string, test_string1) != NULL) {
+	if (myStrcpy(NULL, test_string1) != NULL) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
@@ -58,7 +58,7 @@ Errors test_myStrcpy() {
 }
 
 Errors test_myStrchr() {
-	if (myStrchr(test_string, (int)'b') != NULL) {
+	if (myStrchr(NULL, (int)'b') != NULL) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
@@ -74,7 +74,7 @@ Errors test_myStrchr() {
 }
 
 Errors test_myStrdup() {
-	if (myStrdup(test_string) != NULL) {
+	if (myStrdup(NULL) != NULL) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
@@ -96,11 +96,11 @@ Errors  test_myStrstr() {
     char target_string3[] = "caba";
     char result_string3[] = "cabacaba";
     
-	if (myStrstr(test_string, test_string1) != NULL) {
+	if (myStrstr(NULL, test_string1) != NULL) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
-	if (myStrstr(test_string1, test_string) != NULL) {
+	if (myStrstr(test_string1, NULL) != NULL) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
@@ -126,7 +126,7 @@ Errors  test_myStrstr() {
 
 Errors test_myMemchr() {
 	char test_string1 [] = "abacaba";
-	if (myMemchr(test_string, (int)'c', 7) != NULL) {
+	if (myMemchr(NULL, (int)'c', 7) != NULL) {
 		printf("1I don't wanna do it more. Crashed.");
 		return failure;
 	}
@@ -145,7 +145,7 @@ Errors test_myMemchr() {
 Errors test_myMemset() {
 	char test_string1[] = "abacabaxop";
 	char result_string1[] = "cccccbaxop";
-	if (myMemset(test_string, 'c', 5) != NULL) {
+	if (myMemset(NULL, 'c', 5) != NULL) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
@@ -160,11 +160,11 @@ Errors test_myMemcpy() {
 	char test_string1 [] = "abacaba";
 	char test_string2[4];
 	char test_string3[10];
-	if (myMemcpy(test_string, test_string1, 8) != NULL) {
+	if (myMemcpy(NULL, test_string1, 8) != NULL) {
 		printf("1I don't wanna do it more. Crashed.");
 		return failure;
 	}
-	if (myMemcpy(test_string1, test_string, 8) != 0) {
+	if (myMemcpy(test_string1, NULL, 8) != 0) {
 		printf("2I don't wanna do it more. Crashed.");
 		return failure;
 	}
@@ -183,11 +183,11 @@ Errors test_myMemcpy() {
 Errors test_myMemcmp() {
 	char test_string1[] = "abacaba";
 	char test_string2[] = "abac";
-	if (myMemcmp(test_string, test_string1, myStrlen(test_string1)) != MAXINT) {
+	if (myMemcmp(NULL, test_string1, myStrlen(test_string1)) != MAXINT) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}
-	if (myMemcmp(test_string1, test_string, myStrlen(test_string1)) != MAXINT) {
+	if (myMemcmp(test_string1, NULL, myStrlen(test_string1)) != MAXINT) {
 		printf("I don't wanna do it more. Crashed.");
 		return failure;
 	}

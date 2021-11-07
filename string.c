@@ -176,7 +176,7 @@ void *myMemcpy (void *target, const void *source, size_t n) {
 	if(source == NULL || target == NULL) {
 		return NULL;
 	}
-	if(myStrlen(source) < n) {
+	if(myStrlen((char*)source) < n) {
 		return NULL;
 	}
 	else {

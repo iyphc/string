@@ -20,10 +20,9 @@ int main() {
 	printf("strdub = %s\n", myStrdup(string1));
 	char v[] = "abacala";
 	printf("strstr = %s\n", (char*)myStrstr("ababacalacal", "cal"));
-	printf("memchr = %d\n", myMemchr(string1, 'c', myStrlen(string1) + 1));
-	printf("memset = %s\n", myMemset(string1, 'c', 5));
+	printf("memchr = %s\n", (char*)myMemchr(string1, 'c', myStrlen(string1) + 1));
+	printf("memset = %s\n", (char*)myMemset(string1, 'c', 5));
 	printf("memcmp = %d\n", myMemcmp("cala", "cal", 3));
-	(char*)myMemcpy(string2, string1, 7);
-	printf("memcpy = %s\n", string2);
+	printf("memcpy = %s\n", (char*)myMemcpy(string2, string1, 7));
 	return 0; 
 }
