@@ -19,7 +19,7 @@
  */
 int myStrlen(char* source) {
 	if(source == NULL) {
-		return NULL;
+		return MAXINT;
 	}
 	int i = 0;
 	while (source[i] != '\0') {
@@ -38,7 +38,7 @@ int myStrlen(char* source) {
 
 int myStrcmp(char* string1, char* string2) {
 	if (string1 == NULL || string2 == NULL) {
-		return NULL;
+		return MAXINT;
 	}
 	while (*string1 && (*string1 == *string2)) {
 		string1++; string2++;
@@ -108,8 +108,11 @@ char* myStrdup(char* source) {
  */
 
 char* myStrstr(char* source, char* value) {
-    if(source == NULL && value == NULL) {
+    if(source == NULL || value == NULL) {
 		return NULL;
+	}
+	if(myStrlen(value) == 0) {
+		return source;
 	}
 	for (int i = 0; i < myStrlen(source); i++) {
 		if (*source == *value) {
@@ -135,7 +138,7 @@ void* myMemchr(char* source, int a, size_t n) {
 	}
 	for (int i = 0; i < n; i++) {
 		if (source[i] == a) {
-			return (void*)(i + 1);
+			return (void*)(source + i);
 		}
 	}
 	return NULL;
@@ -197,10 +200,10 @@ void *myMemcpy (void *target, const void *source, size_t n) {
 
 int myMemcmp(char* string1, char* string2,  size_t n) {
 	if (string1 == NULL || string2 == NULL) {
-		return NULL;
+		return MAXINT;
 	}
 	if (myStrlen(string1) < n || myStrlen(string2) < n) {
-		return NULL;
+		return MAXINT;
 	} 
 	for(size_t i = 0; i < n; i++){
 		if (string1[i] == string2[i]) {
