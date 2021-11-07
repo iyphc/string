@@ -1,0 +1,29 @@
+build: main.o string.o
+	gcc main.o string.o
+	#
+	./a.out
+	#
+
+build_test: main_test.o string.o string_test.o
+	gcc main_test.o string.o string_test.o
+	#
+	./a.out
+	#
+
+main_test.o: main_test.c
+	gcc -c main_test.c
+
+string.o: string.c
+	gcc -c string.c
+
+string_test.o: string_test.c
+	gcc -c string_test.c
+
+main.o: main.c
+	gcc -c main.c 
+
+clear:
+	rm string.o  main.o ./a.out
+
+clear_test: 
+	rm string.o string_test.o main_test.o ./a.out
